@@ -1,0 +1,77 @@
+const frascos = [
+    {nombre: "Morronero", precio: 600,},
+    {nombre: "Anchorero", precio: 670,},
+    {nombre: "Amanecer", precio: 650,},
+    {nombre: "Vial Grande", precio: 620,},
+    {nombre: "Vial Chico", precio: 600,},
+    {nombre: "Dulcero", precio: 550,}
+    
+];
+
+let carrito = []
+
+let seleccion = prompt("Hola, Somos de Lua Distribuidora,quiere algun frasco?");
+
+while (seleccion != "si" && seleccion != "no"){
+    alert ("Por favor ingresá si o no")
+    seleccion = prompt("Hola, quiere algun frasco?");
+}
+
+if (seleccion == "si"){
+    alert ("Estas son nuestros envases")
+    let todosLosFrascos = frascos.map((frasco) => frasco.nombre + " $" + frasco.precio);
+    alert (todosLosFrascos.join(" - "));
+} else if (seleccion == "no"){
+    alert("Le esperamos la proxima! Que tenga un gran dia");
+}
+
+while (seleccion != "no"){
+    let frasco = prompt ("Agregá los frascos que quieras, acordate que podes elegir varios");
+    let precio = 0;
+
+    if (frasco == "Morronero" 
+    ||frasco == "Anchorero" 
+    || frasco == "Amanecer" 
+    || frasco == "Vial Grande" 
+    || frasco == "Vial Chico"
+    || frasco == "Dulcero"){
+        switch (frasco){
+            case "Morronero":
+                precio = 600;
+                break;
+            case "Anchorero":
+                precio = 670;
+                break;
+            case "Amanecer":
+                precio = 650;
+                break;
+            case "Vial Grande":
+                precio = 620;
+                break;
+            case "Vial Chico":
+                precio = 600;
+                break;
+                        
+            default:
+                break;
+        }
+        let frascos = parseInt (prompt ("¿Cuantos envases quiere?"))
+        
+        carrito.push({nombre: "Dulcero",unidades: frascos, precio: 550})
+        console.log(carrito);
+    }else {
+       if (frasco > 10);
+        alert ("Producto sin stock")
+    }
+
+    seleccion = prompt ("¿Necesita algun frasco mas?")
+
+    while (seleccion === "no"){
+        alert ("Excelente, veo que eso es todo, este es su total final, muchas gracias por contar con nosotros")
+        carrito.forEach(carritoFinal =>{
+            alert(`Frascos:${carritoFinal.nombre}, Unidades:${carritoFinal.unidades}, Precio:$ ${carritoFinal.precio}
+                , Total a pagar: $ ${carritoFinal.unidades * carritoFinal.precio}`)
+        })
+        break;
+    }
+}
